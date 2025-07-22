@@ -27,12 +27,6 @@ This iteration uses individual Terraform resources for each API Gateway componen
 
 ### Iteration 2 - *unimplemented*
 
-**API Gateway**
-
-Add SSL Termination and configure DNS for purchased domain name to point at Gateway. Handle as much as possible within Terraform.
-
-### Iteration 3 - *unimplemented*
-
 This iteration is intended to combine work on a blog, on the VTT provisioner app, and on learning other pieces of the AWS ecosystem under the one entry point.
 
 **API Gateway**
@@ -48,6 +42,13 @@ Reference Lambda Functions in other git repos instead of a local module or nativ
 
 **Lambda Function**
 The Hello Lambda Function will have served as training wheels. By this iteration, they should come off.
+
+### Iteration 3 - *unimplemented*
+
+**API Gateway**
+
+Add SSL Termination and configure DNS for purchased domain name to point at Gateway. Handle as much as possible within Terraform.
+
 
 ### Iteration 4 - *unimplemented*
 
