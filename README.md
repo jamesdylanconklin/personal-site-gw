@@ -77,15 +77,10 @@ This iteration implements automated deployment pipelines and improves the develo
 Implement automated deployment using GitHub Actions or AWS CodePipeline:
 - Automated Terraform validation and planning
 - Environment-specific deployment workflows
-- Integration testing of deployed APIs
-- Automated rollback capabilities
 
 **Development Workflow**
 
 - Pre-commit hooks for Terraform formatting and validation
-- Automated testing of API Gateway configurations
-- Documentation generation from Terraform code
-- Security scanning and compliance checks
 
 ### Iteration 6 - *unimplemented*
 
@@ -98,21 +93,6 @@ Migrate from individual Terraform resources to OpenAPI specification-based API d
 - Implement AWS API Gateway extensions for integrations
 - Maintain Terraform for infrastructure while using OpenAPI for API definitions
 - Add automated OpenAPI validation and documentation generation
-
-**API Management at Scale**
-
-- Implement proper HTTP status code handling across all endpoints
-- Add request/response validation using OpenAPI schemas
-- Generate client SDKs from OpenAPI specifications
-- Implement API versioning strategy
-- Add comprehensive error handling patterns
-
-**Benefits Realization**
-
-- Dramatically reduce configuration complexity and maintenance overhead
-- Enable better collaboration through standard API documentation
-- Improve API testing and validation capabilities
-- Prepare for integration with API management tools and client generation
 
 ## Usage
 
