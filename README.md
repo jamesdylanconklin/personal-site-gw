@@ -21,6 +21,10 @@ An AWS API Gateway resource will be managed by Terraform. It will route one or m
 
 Note that `:offset` above will not be a dynamic path. The intent, by way of a learning exercise, is to configure a small, static number of lambda listeners.
 
+**Commentary**
+
+This iteration uses individual Terraform resources for each API Gateway component (methods, integrations, responses) rather than an OpenAPI specification. While this approach is verbose and doesn't scale well for complex APIs, it provides excellent visibility into the underlying AWS resources and concepts. This detailed approach serves the learning objectives well, allowing hands-on experience with each piece of the API Gateway puzzle.
+
 ### Iteration 2 - *unimplemented*
 
 **API Gateway**
@@ -82,6 +86,33 @@ Implement automated deployment using GitHub Actions or AWS CodePipeline:
 - Automated testing of API Gateway configurations
 - Documentation generation from Terraform code
 - Security scanning and compliance checks
+
+### Iteration 6 - *unimplemented*
+
+This iteration addresses the scalability limitations of the individual Terraform resource approach as the API grows in complexity.
+
+**OpenAPI Specification Migration**
+
+Migrate from individual Terraform resources to OpenAPI specification-based API definitions:
+- Convert existing mock endpoints to OpenAPI 3.0 specification
+- Implement AWS API Gateway extensions for integrations
+- Maintain Terraform for infrastructure while using OpenAPI for API definitions
+- Add automated OpenAPI validation and documentation generation
+
+**API Management at Scale**
+
+- Implement proper HTTP status code handling across all endpoints
+- Add request/response validation using OpenAPI schemas
+- Generate client SDKs from OpenAPI specifications
+- Implement API versioning strategy
+- Add comprehensive error handling patterns
+
+**Benefits Realization**
+
+- Dramatically reduce configuration complexity and maintenance overhead
+- Enable better collaboration through standard API documentation
+- Improve API testing and validation capabilities
+- Prepare for integration with API management tools and client generation
 
 ## Usage
 
