@@ -1,0 +1,6 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and customize for your environment
+
+project_name         = "personal-site-gw"
+environment          = "dev"
+hello_endpoint_count = 3
