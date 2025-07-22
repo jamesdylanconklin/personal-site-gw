@@ -4,12 +4,14 @@ Entry point for a personal site hosted on AWS. The intent is to host a blog docu
 
 ## Architecture
 
-### Iteration 1
+### Iteration 1 - *In Progress*
 
 **Terraform**
+
 Terraform's AWS provider will be responsible for deploying, modifying, and tearing down all resources required by this project. Any project-specific nomenclature, e.g. account names and IDs or relevant web domains, will be parameterized and drawn from a `.tfvars` file.
 
 **API Gateway**
+
 An AWS API Gateway resource will be managed by Terraform. It will route one or more paths to a single Lambda function:
 
 | Path        | Description                                      |
@@ -19,13 +21,13 @@ An AWS API Gateway resource will be managed by Terraform. It will route one or m
 
 Note that `:offset` above will not be a dynamic path. The intent, by way of a learning exercise, is to configure a small, static number of lambda listeners.
 
-### Iteration 2
+### Iteration 2 - *unimplemented*
 
 **API Gateway**
 
 Add SSL Termination and configure DNS for purchased domain name to point at Gateway. Handle as much as possible within Terraform.
 
-### Iteration 3
+### Iteration 3 - *unimplemented*
 
 This iteration is intended to combine work on a blog, on the VTT provisioner app, and on learning other pieces of the AWS ecosystem under the one entry point.
 
@@ -42,6 +44,44 @@ Reference Lambda Functions in other git repos instead of a local module or nativ
 
 **Lambda Function**
 The Hello Lambda Function will have served as training wheels. By this iteration, they should come off.
+
+### Iteration 4 - *unimplemented*
+
+This iteration focuses on supporting multiple deployment environments and improving the infrastructure management patterns.
+
+**Multiple Environments**
+
+Refactor the Terraform configuration to support multiple environments (dev, staging, prod) with:
+- Environment-specific variable files (`dev.tfvars`, `staging.tfvars`, `prod.tfvars`)
+- Remote state management using S3 backend with DynamoDB locking
+- Environment-specific resource configurations (logging, throttling, monitoring)
+- Conditional resource creation based on environment
+
+**Infrastructure Improvements**
+
+- Modularize Terraform code for better reusability
+- Add comprehensive tagging strategy for resource management
+- Implement environment-specific API Gateway configurations
+- Add CloudWatch logging and monitoring for non-dev environments
+
+### Iteration 5 - *unimplemented*
+
+This iteration implements automated deployment pipelines and improves the development workflow.
+
+**CI/CD Pipeline**
+
+Implement automated deployment using GitHub Actions or AWS CodePipeline:
+- Automated Terraform validation and planning
+- Environment-specific deployment workflows
+- Integration testing of deployed APIs
+- Automated rollback capabilities
+
+**Development Workflow**
+
+- Pre-commit hooks for Terraform formatting and validation
+- Automated testing of API Gateway configurations
+- Documentation generation from Terraform code
+- Security scanning and compliance checks
 
 ## Usage
 
