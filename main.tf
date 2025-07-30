@@ -4,7 +4,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
   }
 }
@@ -33,6 +33,7 @@ resource "aws_api_gateway_rest_api" "main" {
 resource "aws_api_gateway_deployment" "main" {
   depends_on = [
     module.hello_endpoints,
+    module.die_roller,
   ]
 
   rest_api_id = aws_api_gateway_rest_api.main.id
@@ -62,6 +63,13 @@ resource "aws_api_gateway_resource" "hello_parent" {
   path_part   = "hello"
 }
 
+# Demos parent resource
+resource "aws_api_gateway_resource" "demos_parent" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_rest_api.main.root_resource_id
+  path_part   = "demos"
+}
+
 # Hello endpoints using module
 module "hello_endpoints" {
   source = "./modules/hello-endpoint"
@@ -71,4 +79,12 @@ module "hello_endpoints" {
   parent_resource_id = aws_api_gateway_resource.hello_parent.id
   path_part          = tostring(count.index + 1)
   message            = "Hello World ${count.index + 1}!"
+}
+
+# Die roller endpoints using module from GitHub
+module "die_roller" {
+  source = "git::https://github.com/jamesdylanconklin/personal-site-demos.git//demos/lambda/die-roller?ref=jconk/lambdas/roll"
+
+  parent_api_id      = aws_api_gateway_rest_api.main.id
+  parent_resource_id = aws_api_gateway_resource.demos_parent.id
 }
