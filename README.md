@@ -12,7 +12,7 @@ Terraform's AWS provider will be responsible for deploying, modifying, and teari
 
 **API Gateway**
 
-An AWS API Gateway resource will be managed by Terraform. It will route one or more paths to a single Lambda function:
+An AWS API Gateway resource will be managed by Terraform. It will route one or more paths to Hello World mock responses:
 
 | Path        | Description                                      |
 |-------------|--------------------------------------------------|
@@ -25,19 +25,15 @@ Note that `:offset` above will not be a dynamic path. The intent, by way of a le
 
 This iteration uses individual Terraform resources for each API Gateway component (methods, integrations, responses) rather than an OpenAPI specification. While this approach is verbose and doesn't scale well for complex APIs, it provides excellent visibility into the underlying AWS resources and concepts. This detailed approach serves the learning objectives well, allowing hands-on experience with each piece of the API Gateway puzzle.
 
-### Iteration 2 - *unimplemented*
-
-**API Gateway**
-
-Add SSL Termination and configure DNS for purchased domain name to point at Gateway. Handle as much as possible within Terraform.
-
-### Iteration 3 - *unimplemented*
+### Iteration 2 / Ongoing - *unimplemented*
 
 This iteration is intended to combine work on a blog, on the VTT provisioner app, and on learning other pieces of the AWS ecosystem under the one entry point.
 
+Despite being the second iteration, this should be understood as an ongoing project meant to incorporate other demo-worthy work I do.
+
 **API Gateway**
 
-Reference Lambda Functions in other git repos instead of a local module or native Terraform resources. The routes are not certain, but might look something like:
+Reference Lambda Functions or other handlers in other git repos instead of a local module or native Terraform resources. The routes are not certain, but might look something like:
 
 | Path        | Description                                      |
 |-------------|--------------------------------------------------|
@@ -45,9 +41,14 @@ Reference Lambda Functions in other git repos instead of a local module or nativ
 | `/blog/*`   | Lambda from future personal-site-blog repo. |
 | `/vtt/*`    | Lambda from future vtt-provisioner repo |
 | `/demo/:topic` | Lambda from aws-demos/:topic repo and directory |
+| `/hello/:offset` | Hello world response incorporating the offset             |
 
-**Lambda Function**
-The Hello Lambda Function will have served as training wheels. By this iteration, they should come off.
+### Iteration 3 - *unimplemented*
+
+**API Gateway**
+
+Add SSL Termination and configure DNS for purchased domain name to point at Gateway. Handle as much as possible within Terraform.
+
 
 ### Iteration 4 - *unimplemented*
 
