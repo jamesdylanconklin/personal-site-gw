@@ -87,4 +87,6 @@ module "die_roller" {
 
   parent_api_id      = aws_api_gateway_rest_api.main.id
   parent_resource_id = aws_api_gateway_resource.demos_parent.id
+  environment        = var.environment
+  project_name       = var.project_name
 }
