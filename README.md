@@ -4,7 +4,7 @@ Entry point for a personal site hosted on AWS. The intent is to host a blog docu
 
 ## Architecture
 
-### Iteration 1 - *In Progress*
+### Iteration 1 - *Completed in 78b9e856a7519ec44622782800774d05b4d22c06*
 
 **Terraform**
 
