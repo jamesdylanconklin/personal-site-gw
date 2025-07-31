@@ -15,3 +15,8 @@ variable "hello_endpoint_count" {
   type        = number
   default     = 3
 }
+
+variable "s3_blog_bucket_name" {
+  description = "S3 bucket name for blog content"
+  type        = string
+}

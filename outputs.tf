@@ -19,12 +19,21 @@ output "hello_endpoint" {
 output "die_roller_endpoints" {
   description = "The Die Roller endpoint URLs"
   value = {
-    roll_basic = "${aws_api_gateway_stage.main.invoke_url}/demos/roll"
-    roll_with_params = "${aws_api_gateway_stage.main.invoke_url}/demos/roll/{rollString}"
+    for key, resource in module.die_roller.api_gateway_resources : 
+    key =>"${aws_api_gateway_stage.main.invoke_url}${resource.path}"
   }
 }
 
-output "die_roller_lambda_arn" {
-  description = "The ARN of the die roller Lambda function"
-  value = module.die_roller.lambda_function_arn
+
+output "s3_fetch_endpoints" {
+  description = "The S3 Fetch endpoint URLs"
+  value = {
+    for key, resource in module.s3_fetch.api_gateway_resources : 
+    key =>"${aws_api_gateway_stage.main.invoke_url}${resource.path}"
+  }
 }
+
+# output "s3_fetch_lambda_arn" {
+#   description = "The ARN of the S3 fetch Lambda function"
+#   value = module.s3_fetch.lambda_function_arn
+# }
