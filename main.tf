@@ -83,7 +83,7 @@ module "hello_endpoints" {
 
 # Die roller endpoints using module from GitHub
 module "die_roller" {
-  source = "git::https://github.com/jamesdylanconklin/personal-site-demos.git//demos/lambda/die-roller?ref=jconk/lambdas/roll"
+  source = "git::https://github.com/jamesdylanconklin/personal-site-demos.git//demos/lambda/die-roller?ref=main"
 
   parent_api_id      = aws_api_gateway_rest_api.main.id
   parent_resource_id = aws_api_gateway_resource.demos_parent.id
