@@ -25,7 +25,7 @@ Note that `:offset` above will not be a dynamic path. The intent, by way of a le
 
 This iteration uses individual Terraform resources for each API Gateway component (methods, integrations, responses) rather than an OpenAPI specification. While this approach is verbose and doesn't scale well for complex APIs, it provides excellent visibility into the underlying AWS resources and concepts. This detailed approach serves the learning objectives well, allowing hands-on experience with each piece of the API Gateway puzzle.
 
-### Iteration 2 / Ongoing - *unimplemented*
+### Iteration 2 - *Ongoing*
 
 This iteration is intended to combine work on a blog, on the VTT provisioner app, and on learning other pieces of the AWS ecosystem under the one entry point.
 
@@ -42,6 +42,8 @@ Reference Lambda Functions or other handlers in other git repos instead of a loc
 | `/vtt/*`    | Lambda from future vtt-provisioner repo |
 | `/demo/:topic` | Lambda from aws-demos/:topic repo and directory |
 | `/hello/:offset` | Hello world response incorporating the offset             |
+| `/demos/roll` | Roll a d20! |
+| `/demos/roll/{rollString}` | Roll a (simplistic) roll string, e.g. 1d8+4+2d6 |
 
 ### Iteration 3 - *unimplemented*
 
