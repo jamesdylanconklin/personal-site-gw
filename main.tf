@@ -30,6 +30,16 @@ resource "aws_api_gateway_rest_api" "main" {
     types = ["REGIONAL"]
   }
 
+  binary_media_types = [
+    "image/*",
+    "text/html",
+    "text/css", 
+    "text/javascript",
+    "application/pdf",
+    "application/zip",
+    "application/octet-stream"
+  ]
+
   tags = local.common_tags
 }
 
@@ -76,19 +86,19 @@ module "die_roller" {
   project_name       = var.project_name
 }
 
-# Blog parent resource
-resource "aws_api_gateway_resource" "blog_parent" {
+# S3-fetch parent resource
+resource "aws_api_gateway_resource" "s3_fetch_parent" {
   rest_api_id = aws_api_gateway_rest_api.main.id
   parent_id   = aws_api_gateway_rest_api.main.root_resource_id
-  path_part   = "blog"
+  path_part   = "s3-fetch"
 }
 
-# Blog s3-fetch endpoint
+# S3-fetch endpoint
 module "s3_fetch" {
   source = "git::https://github.com/jamesdylanconklin/personal-site-demos.git//demos/lambda/s3-fetch?ref=jconk/lambdas/s3-fetch"
 
   parent_api_id      = aws_api_gateway_rest_api.main.id
-  parent_resource_id = aws_api_gateway_resource.blog_parent.id
+  parent_resource_id = aws_api_gateway_resource.s3_fetch_parent.id
   environment        = var.environment
   project_name       = var.project_name
   bucket_name        = var.s3_blog_bucket_name

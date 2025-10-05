@@ -27,10 +27,7 @@ output "die_roller_endpoints" {
 
 output "s3_fetch_endpoints" {
   description = "The S3 Fetch endpoint URLs"
-  value = {
-    for key, resource in module.s3_fetch.api_gateway_resources : 
-    key =>"${aws_api_gateway_stage.main.invoke_url}${resource.path}"
-  }
+  value = "${aws_api_gateway_stage.main.invoke_url}${module.s3_fetch.api_gateway_resource.path}"
 }
 
 # output "s3_fetch_lambda_arn" {
